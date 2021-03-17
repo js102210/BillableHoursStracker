@@ -9,5 +9,8 @@
         <module name="btr_take_3" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="btr_take_3" target="11" />
+    </bytecodeTargetLevel>
   </component>
 </project>
