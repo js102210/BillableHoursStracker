@@ -245,8 +245,13 @@ public class Employee {
         if (month != Month.DECEMBER) {
             Month nextMonth = month.plus(1);
             Double balanceToCarry = employee.getMonthGoal(month.toString()) - employee.getMonthHours(month.toString());
-            Double newGoal = employee.getMonthGoal(nextMonth) + balanceToCarry;
-            employee.setMonthGoal(nextMonth, newGoal);
+            //balance should only carry over for positive balances (to encourage maximum sales activity), if an org wants to carry negative balances so that an
+            //overshot goal reduces next month's goal, simply remove this 'if' statement from the below lines
+            if (balanceToCarry > 0){
+                Double newGoal = employee.getMonthGoal(nextMonth) + balanceToCarry;
+                employee.setMonthGoal(nextMonth, newGoal);
+            }
+
         }
     }
 
