@@ -256,9 +256,6 @@ public class App {
                 } }catch (NumberFormatException e){
                 System.out.println("Something was wrong with your inputs. Please make sure you enter all numerical values as digits (ex '1' not 'one').");
             }
-
-
-
         } else {
             System.out.println("There isn't an employee with that ID in the database. Please make another selection.");
             handleChangeEmployeeGoals();
@@ -340,21 +337,26 @@ public class App {
     }
 
     public void printGoalsAndHoursForSingleEmployee(Employee employee){
-        System.out.println("------------------------------------");
+        System.out.println("-------------------------------------------------------");
         System.out.println(employee.getFullName());
-        System.out.println("MONTH     GOAL      HOURS LOGGED");
-        System.out.println("------------------------------------");
+        System.out.println("MONTH     GOAL      HOURS LOGGED     GOAL EXCEEDED BY");
+        System.out.println("-------------------------------------------------------");
         int i = 1;
         while (i <= 12) {
             Month m = Month.of(i);
             Double g = employee.getMonthGoal(Month.of(i));
             Double h = employee.getMonthHours(Month.of(i));
-            if(g != null && h != null) {
-                System.out.format("%.3s       %.2f      %.2f\n", m, g, h);
-
+            Double d = employee.getMonthGoalDiff(Month.of(i));
+            if(g != null && h != null && d != null) {
+                System.out.format("%.3s       %.2f      %.2f          %.2f\n", m, g, h, d);
             }
             i++;
         }
+        String annual = "YTD";
+        Double annualGoal = employee.getAnnualBillableHoursGoal();
+        Double annualHoursLogged = employee.getAnnualHoursLogged();
+        Double annualDiff = employee.getAnnualGoalDiff();
+        System.out.format("%.3s       %.2f      %.2f          %.2f\n", annual, annualGoal, annualHoursLogged, annualDiff);
     }
     public Employee lookupEmployee(Map<Long, Employee> employeeLookup, Long idToLookup) {
         return employeeLookup.get(idToLookup);

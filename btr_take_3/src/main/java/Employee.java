@@ -25,8 +25,6 @@ public class Employee {
     private Double octGoal = 0.0;
     private Double novGoal = 0.0;
     private Double decGoal = 0.0;
-    private Double annualBillableHoursGoal = janGoal + febGoal + marGoal + aprGoal + mayGoal + junGoal + julGoal
-            + augGoal + sepGoal + octGoal + novGoal + decGoal;
 
 
 
@@ -42,9 +40,7 @@ public class Employee {
     private Double octHoursLogged = 0.0;
     private Double novHoursLogged = 0.0;
     private Double decHoursLogged = 0.0;
-    private Double annualHoursLogged = janHoursLogged + febHoursLogged + marHoursLogged + aprHoursLogged
-            + mayHoursLogged + junHoursLogged + julHoursLogged + augHoursLogged + sepHoursLogged + octHoursLogged
-            + novHoursLogged + decHoursLogged;
+
 
 
     private Map<Month, Double> goalsByMonth = new HashMap<Month, Double>();
@@ -94,7 +90,6 @@ public class Employee {
     //constructor for "generic" employee whose goals are set methodically (need to fill in the month goals with the correct percentages)
     public Employee(String fullName, double annualBillableHoursGoal){
         this.fullName = fullName;
-        this.annualBillableHoursGoal = annualBillableHoursGoal;
         //derive monthly goals from annual
         this.janGoal = annualBillableHoursGoal * 0.072;
         this.febGoal = annualBillableHoursGoal* 0.13;
@@ -140,7 +135,11 @@ public class Employee {
         this.fullName = fullName;
     }
     public Double getAnnualBillableHoursGoal() {
-        return this.annualBillableHoursGoal;
+        return this.getMonthGoal(Month.JANUARY) +  this.getMonthGoal(Month.FEBRUARY) +  this.getMonthGoal(Month.MARCH)
+                +  this.getMonthGoal(Month.APRIL) +  this.getMonthGoal(Month.MAY)
+                +  this.getMonthGoal(Month.JUNE) +  this.getMonthGoal(Month.JULY)
+                +  this.getMonthGoal(Month.AUGUST) +  this.getMonthGoal(Month.SEPTEMBER)
+                +  this.getMonthGoal(Month.OCTOBER) +  this.getMonthGoal(Month.NOVEMBER) +  this.getMonthGoal(Month.DECEMBER);
     }
     //a getter to get the month goal using either a string or the string name parsed as a month (for convenience)
     public Double getMonthGoal(String month){
@@ -195,7 +194,7 @@ public class Employee {
     }
 
     public void setEmployeeGoalsToDefaults(Double annualBillableHoursGoal){
-        this.annualBillableHoursGoal = annualBillableHoursGoal;
+
         //derive monthly goals from annual
         this.janGoal = annualBillableHoursGoal * 0.072;
         this.febGoal = annualBillableHoursGoal* 0.13;
@@ -210,6 +209,26 @@ public class Employee {
         this.novGoal = annualBillableHoursGoal * 0.056;
         this.decGoal = annualBillableHoursGoal * 0.044;
         this.saveGoalsToMap();
+    }
+    public Double getAnnualHoursLogged() {
+        return this.getMonthHours(Month.JANUARY) + this.getMonthHours(Month.FEBRUARY) + this.getMonthHours(Month.MARCH)
+                + this.getMonthHours(Month.APRIL)
+                + this.getMonthHours(Month.MAY) + this.getMonthHours(Month.JUNE)
+                + this.getMonthHours(Month.JULY) + this.getMonthHours(Month.AUGUST)
+                + this.getMonthHours(Month.SEPTEMBER) + this.getMonthHours(Month.OCTOBER)
+                + this.getMonthHours(Month.NOVEMBER) + this.getMonthHours(Month.DECEMBER);
+    }
+
+    public Double getMonthGoalDiff(Month month) {
+        return this.getMonthGoal(month) - this.getMonthHours(month);
+    }
+
+    public Double getAnnualGoalDiff() {
+        Double result = 0.0;
+        for (int i = 1; i <=12; i++){
+            result += this.getMonthGoalDiff(Month.of(i));
+        }
+        return result;
     }
     //logs hours to current month if no month specified
     //overloaded to take either month as string or parsed as month for convenience
@@ -257,3 +276,5 @@ public class Employee {
 
 
 }
+
+
