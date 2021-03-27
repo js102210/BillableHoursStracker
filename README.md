@@ -3,7 +3,7 @@ App to track billable hours for one or more employees with annual charge hour go
 
 An app for employees who have a goal for a certain number of billable hours to be logged per month, and per year.
 
-Employees can be created to be tracked in the system, and assigned monthly goals. The assigning of monthly goals can either be done based on a goal 'template' in which a typical annual spread is calculated from their annual goal, or each month can be provided for a given employee.
+Employees can be created to be tracked in the system, and assigned monthly goals. The assigning of monthly goals can either be done based on a goal 'template' in which a typical annual spread is calculated from their annual goal, or each month's goal can be entered for a given employee.
 
 Billable hours can be looged for any tracked employee, which accumulate for the month and are stored in a database, to be referenced against their goals.
 Goal progress is considered persistent throughout they year, meaning that an employee who falls 10 hours of one month, will have 10 hours added to their goal for the next (this is handled with a routine that runs once per month).
