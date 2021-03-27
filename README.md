@@ -16,7 +16,6 @@ This app currently functions in the command line, but is still in progress in th
 
 
 TODO: Add 'Tax season' projection report for hour goals /n
-TODO: Change monthly 'CarryBalance' routine to carry only positive balances (thus only increasing the balance for a month, never decreasing it) /n
 TODO: Add tracking for how much an employee exceeded or fell short of their goal each month. This is purely for reporting purposes. /n
 TODO: Write API to be called from a front-end /n
 TODO: Write gui front-end /n
