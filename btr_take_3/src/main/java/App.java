@@ -411,6 +411,7 @@ public class App {
         return hoursLeft/weeksLeft;
     }
 
+
     public void getSingleMonthProjection(String employeeName){
         double hoursLeft = getHoursLeftTillGoal(employeeName);
         double hoursPerWeek = hoursPerWeekToMeetGoal(employeeName);
@@ -422,10 +423,9 @@ public class App {
     public void handleSingleMonthProjection(){
         System.out.println("Enter the name of the employee you want to get a projection for: ");
         String employeeName = userStringInput.nextLine();
-        getSingleMonthProjection(employeeName);
+        getSingleMonthProjection (employeeName);
         handleGoalMenu();
     }
-
 
 }
 

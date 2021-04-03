@@ -29,9 +29,8 @@ CREATE TABLE goals
         employee_id int,
         month_number int,
         goal_amt float,
-     
-       
-        
+        goal_diff varchar DEFAULT 'NOT YET CALCULATED',
+
         CONSTRAINT fk_months_employee_id FOREIGN KEY (employee_id) REFERENCES employees(employee_id)
        
 );

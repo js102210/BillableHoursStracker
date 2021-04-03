@@ -1,13 +1,11 @@
-import com.sun.source.tree.DoWhileLoopTree;
+package com.example.demo.models;
 
 import java.time.Month;
 import java.util.Calendar;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class Employee {
-
     private String fullName;
 
 
@@ -47,9 +45,9 @@ public class Employee {
     private Map<Month, Double> hoursByMonth = new HashMap<Month, Double>();
 
     //generic constructor to be called ONLY by DAO
-    Employee() {
-    this.hoursByMonth = new HashMap<>();
-    this.goalsByMonth = new HashMap<>();
+    public Employee() {
+        this.hoursByMonth = new HashMap<>();
+        this.goalsByMonth = new HashMap<>();
     }
     public Long getEmployee_id() {
         return employee_id;
@@ -274,7 +272,4 @@ public class Employee {
         }
     }
 
-
 }
-
-
